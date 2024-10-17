@@ -1,14 +1,4 @@
 ﻿using Bank_Project.Repository;
-using System;
-using System.Collections.Generic;
-using System.Diagnostics.Metrics;
-using System.Dynamic;
-using System.Linq;
-using System.Numerics;
-using System.Security.Cryptography.X509Certificates;
-using System.Text;
-using System.Threading.Tasks;
-using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace Bank_Project.Person
 {
@@ -83,7 +73,10 @@ namespace Bank_Project.Person
             Screen.Draw("Update Person Info");
 
             clsPerson person = _GetPersonByID();
-            
+
+            Console.WriteLine(new string('-', 60));
+            Console.WriteLine($"{"ID".PadRight(8)} {"First Name".PadRight(15)} {"Last Name".PadRight(20)} {"Date of Birth".PadRight(15)}");
+            Console.WriteLine(person.personDTO.ToString());
             Console.WriteLine(new string('-', 60));
 
             PersonDTO updatedPerson = _GetPersonInfo();

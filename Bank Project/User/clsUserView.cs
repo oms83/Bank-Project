@@ -69,6 +69,9 @@ public class clsUserView : IScreen
         clsUser user = _GetUserByID();
 
         Console.WriteLine(new string('-', 50));
+        Console.WriteLine($"{"User ID".PadRight(10)} {"User Name".PadRight(20)} {"Person ID".PadRight(15)}");
+        Console.WriteLine(user.UserDTO.ToString());
+        Console.WriteLine(new string('-', 50));
 
         UserDTO updatedUser = _GetUserInfo();
 

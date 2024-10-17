@@ -68,6 +68,9 @@ public class clsCountryView : IScreen
         clsCountry country = _GetCountryByID();
 
         Console.WriteLine(new string('-', 40));
+        Console.WriteLine($"{"Country ID".PadRight(10)} {"Country Name".PadRight(30)}");
+        Console.WriteLine(country.CountryDTO.ToString());
+        Console.WriteLine(new string('-', 40));
 
         CountryDTO updatedCountry = _GetCountryInfo();
 

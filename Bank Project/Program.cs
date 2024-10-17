@@ -6,9 +6,10 @@ namespace Bank_Project
     public class Program
     {
         public enum enMenuChoices { PeopleMenu=1, UsersMenu, ClientsMenu, CountriesMenu, Login };
-        public enum enChoices { AddNew=1, Update, Delete, ListAll, Find, MainMenu }
+        public enum enChoices { AddNew=1, Update=2, Delete=3, ListAll=4, Find=5, MainMenu=6, Deposit=7, Withdraw=8 }
         public static void PeopleMenu()
         {
+            Screen.Draw("Manage People Menu");
             Console.WriteLine(new string('-', 60));
             Console.WriteLine("\t[1] Add New Person: ");
             Console.WriteLine("\t[2] Update Person: ");
@@ -25,20 +26,31 @@ namespace Bank_Project
             {
                 case (int)enChoices.AddNew:
                     clsPersonView.AddNewScreen();
+                    Screen.ClearScreen();
+                    PeopleMenu();
                     break;
                 case (int)enChoices.Update:
-                    clsPersonView.UpdateScreen(); 
+                    clsPersonView.UpdateScreen();
+                    Screen.ClearScreen();
+                    PeopleMenu();
                     break;
                 case (int)enChoices.Delete:
                     clsPersonView.DeleteScreen();
+                    Screen.ClearScreen();
+                    PeopleMenu();
                     break;
                 case (int)enChoices.ListAll:
                     clsPersonView.GetAllScreen();
+                    Screen.ClearScreen();
+                    PeopleMenu();
                     break;
                 case (int)enChoices.Find:
                     clsPersonView.GetByIDScreen();
+                    Screen.ClearScreen();
+                    PeopleMenu();
                     break;
                 case (int)enChoices.MainMenu:
+                    Console.Clear();
                     MainScreen();
                     break;
             }
@@ -46,6 +58,8 @@ namespace Bank_Project
 
         public static void UsersMenu()
         {
+            Screen.Draw("Manage Users Menu");
+
             Console.WriteLine(new string('-', 60));
             Console.WriteLine("\t[1] Add New User: ");
             Console.WriteLine("\t[2] Update User: ");
@@ -61,18 +75,27 @@ namespace Bank_Project
             {
                 case (int)enChoices.AddNew:
                     clsUserView.AddNewScreen();
+                    Screen.ClearScreen();
+                    UsersMenu();
                     break;
                 case (int)enChoices.Update:
                     clsUserView.UpdateScreen();
+                    Screen.ClearScreen();
+                    UsersMenu();
                     break;
                 case (int)enChoices.Delete:
                     clsUserView.DeleteScreen();
+                    Screen.ClearScreen();
                     break;
                 case (int)enChoices.ListAll:
                     clsUserView.GetAllScreen();
+                    Screen.ClearScreen();
+                    UsersMenu();
                     break;
                 case (int)enChoices.Find:
                     clsUserView.GetByIDScreen();
+                    Screen.ClearScreen();
+                    UsersMenu();
                     break;
                 case (int)enChoices.MainMenu:
                     MainScreen();
@@ -82,6 +105,8 @@ namespace Bank_Project
 
         public static void ClientsMenu()
         {
+            Screen.Draw("Manage Clients Menu");
+
             Console.WriteLine(new string('-', 60));
             Console.WriteLine("\t[1] Add New Client: ");
             Console.WriteLine("\t[2] Update Client: ");
@@ -89,26 +114,48 @@ namespace Bank_Project
             Console.WriteLine("\t[4] List All Clients: ");
             Console.WriteLine("\t[5] Get Client By ID: ");
             Console.WriteLine("\t[6] Main Menu: ");
+            Console.WriteLine("\t[7] Deposit: ");
+            Console.WriteLine("\t[8] Withdraw: ");
             Console.WriteLine(new string('-', 60));
 
-            int choice = clsValidation.GetEnterBetweenNM(1, 6);
+            int choice = clsValidation.GetEnterBetweenNM(1, 8);
 
             switch (choice)
             {
                 case (int)enChoices.AddNew:
                     clsClientView.AddNewScreen();
+                    Screen.ClearScreen();
+                    ClientsMenu();
                     break;
                 case (int)enChoices.Update:
                     clsClientView.UpdateScreen();
+                    Screen.ClearScreen();
+                    ClientsMenu();
                     break;
                 case (int)enChoices.Delete:
                     clsClientView.DeleteScreen();
+                    Screen.ClearScreen();
+                    ClientsMenu();
                     break;
                 case (int)enChoices.ListAll:
                     clsClientView.GetAllScreen();
+                    Screen.ClearScreen();
+                    ClientsMenu();
                     break;
                 case (int)enChoices.Find:
                     clsClientView.GetByIDScreen();
+                    Screen.ClearScreen();
+                    ClientsMenu();
+                    break;
+                case (int)enChoices.Deposit:
+                    clsClientView.Deposit();
+                    Screen.ClearScreen();
+                    ClientsMenu();
+                    break;
+                case (int)enChoices.Withdraw:
+                    clsClientView.Withdraw();
+                    Screen.ClearScreen();
+                    ClientsMenu();
                     break;
                 case (int)enChoices.MainMenu:
                     MainScreen();
@@ -118,6 +165,8 @@ namespace Bank_Project
 
         public static void CountriesMenu()
         {
+            Screen.Draw("Manage Countries Menu");
+
             Console.WriteLine(new string('-', 60));
             Console.WriteLine("\t[1] Add New Country: ");
             Console.WriteLine("\t[2] Update Country: ");
@@ -133,18 +182,28 @@ namespace Bank_Project
             {
                 case (int)enChoices.AddNew:
                     clsCountryView.AddNewScreen();
+                    Screen.ClearScreen();
+                    CountriesMenu();
                     break;
                 case (int)enChoices.Update:
                     clsCountryView.UpdateScreen();
+                    Screen.ClearScreen();
+                    CountriesMenu();
                     break;
                 case (int)enChoices.Delete:
                     clsCountryView.DeleteScreen();
+                    Screen.ClearScreen();
+                    CountriesMenu();
                     break;
                 case (int)enChoices.ListAll:
                     clsCountryView.GetAllScreen();
+                    Screen.ClearScreen();
+                    CountriesMenu();
                     break;
                 case (int)enChoices.Find:
                     clsCountryView.GetByIDScreen();
+                    Screen.ClearScreen();
+                    CountriesMenu();
                     break;
                 case (int)enChoices.MainMenu:
                     MainScreen();
@@ -159,6 +218,8 @@ namespace Bank_Project
 
         public static void MainScreen()
         {
+            Screen.Draw("Main Menu");
+
             Console.WriteLine(new string('-', 60));
             Console.WriteLine("\t[1] Manage People: ");
             Console.WriteLine("\t[2] Manage Users: ");

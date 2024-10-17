@@ -1,6 +1,7 @@
 ﻿using Bank_Project.Client;
 using Bank_Project.Repository;
 using Bank_Project;
+using Bank_Project.User;
 
 public class clsClientView : IScreen
 {
@@ -23,7 +24,13 @@ public class clsClientView : IScreen
             Console.WriteLine(client.ToString());
         }
     }
-
+    private static void _ClientInfo(clsClient client)
+    {
+        Console.WriteLine(new string('-', 50));
+        Console.WriteLine($"{"Client ID".PadRight(10)} {"Account Number".PadRight(20)} {"Balance".PadRight(15)}");
+        Console.WriteLine(client.ClientDTO.ToString());
+        Console.WriteLine(new string('-', 50));
+    }
     private static clsClient _GetClientByID()
     {
         int clientID = default;
@@ -46,10 +53,7 @@ public class clsClientView : IScreen
 
         clsClient client = _GetClientByID();
 
-        Console.WriteLine(new string('-', 50));
-        Console.WriteLine($"{"Client ID".PadRight(10)} {"Account Number".PadRight(20)} {"Balance".PadRight(15)}");
-        Console.WriteLine(client.ClientDTO.ToString());
-        Console.WriteLine(new string('-', 50));
+        _ClientInfo(client); 
     }
 
     private static ClientDTO _GetClientInfo()
@@ -68,7 +72,7 @@ public class clsClientView : IScreen
 
         clsClient client = _GetClientByID();
 
-        Console.WriteLine(new string('-', 50));
+        _ClientInfo(client);
 
         ClientDTO updatedClient = _GetClientInfo();
 
@@ -78,6 +82,31 @@ public class clsClientView : IScreen
         client.Save();
     }
 
+    public static void Deposit()
+    {
+        clsClient client = _GetClientByID();
+        
+        _ClientInfo(client);
+
+        int amount = clsValidation.GetMultiplesOfFive("Enter amount in multiples of five: ");
+
+        client.Deposit(amount);
+
+        Console.WriteLine($"Balance after update: {client.Balance}");
+    }
+
+    public static void Withdraw()
+    {
+        clsClient client = _GetClientByID();
+
+        _ClientInfo(client);
+
+        int amount = clsValidation.GetMultiplesOfFive("Enter amount in multiples of five: ");
+
+        client.Withdraw(amount);
+
+        Console.WriteLine($"Balance after update: {client.Balance}");
+    }
     public static void AddNewScreen()
     {
         Screen.Draw("Add New Client");

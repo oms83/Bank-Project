@@ -19,24 +19,22 @@ namespace Bank_Project
     {
         public static void ClearScreen()
         {
-            Console.Write("Press to any key to clear screen");
+            Console.Write("Press any key to return to the menu.");
             Console.ReadKey();
             Console.Clear();
         }
         public static void Clock()
         {
-            Console.WriteLine(new string('-', 60));
             Console.WriteLine($"\t   {DateTime.Now}");
-            Console.WriteLine(new string('-', 60));
-
         }
         public static void Draw(string message)
         {
+            Console.Clear();
+            Console.WriteLine(new string('-', 60));
             Clock();
             Console.WriteLine(new string('-', 60));
             Console.WriteLine($"\t\t{message}");
             Console.WriteLine(new string('-', 60));
-
         }
     }
 }
