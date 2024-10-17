@@ -7,7 +7,7 @@ public class clsUserView : IScreen
     public static void DeleteScreen()
     {
         Screen.Draw("Delete User By ID");
-        UserDTO user = _GetUserByID();
+        clsUser user = _GetUserByID();
         clsUser.DeleteUserByID(user.UserID);
     }
 
@@ -24,7 +24,7 @@ public class clsUserView : IScreen
         }
     }
 
-    private static UserDTO _GetUserByID()
+    private static clsUser _GetUserByID()
     {
         int userID = default;
 
@@ -37,18 +37,18 @@ public class clsUserView : IScreen
             userID = clsValidation.GetPositiveNumber("Enter user id: ");
         }
 
-        return user;
+        return new clsUser(user, clsUser.enMode.Update);
     }
 
     public static void GetByIDScreen()
     {
         Screen.Draw("Get User By ID");
 
-        UserDTO user = _GetUserByID();
+        clsUser user = _GetUserByID();
 
         Console.WriteLine(new string('-', 50));
         Console.WriteLine($"{"User ID".PadRight(10)} {"User Name".PadRight(20)} {"Person ID".PadRight(15)}");
-        Console.WriteLine(user.ToString());
+        Console.WriteLine(user.UserDTO.ToString());
         Console.WriteLine(new string('-', 50));
     }
 
@@ -66,15 +66,16 @@ public class clsUserView : IScreen
     {
         Screen.Draw("Update User Info");
 
-        UserDTO user = _GetUserByID();
+        clsUser user = _GetUserByID();
 
         Console.WriteLine(new string('-', 50));
 
-        UserDTO userNewInfo = _GetUserInfo();
+        UserDTO updatedUser = _GetUserInfo();
 
-        clsUser updatedUser = new clsUser(userNewInfo, clsUser.enMode.Update);
+        user.UserName = updatedUser.UserName;
+        user.Password = updatedUser.Password;
 
-        updatedUser.Save();
+        user.Save();
     }
 
     public static void AddNewScreen()

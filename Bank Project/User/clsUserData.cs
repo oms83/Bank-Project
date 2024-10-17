@@ -47,7 +47,7 @@ namespace Bank_Project.User
 
         public static bool UpdateUserData(int id, UserDTO updatedUser)
         {
-            UserDTO? user = GetUserByIDData(id);
+            UserDTO? user = clsRepository.lstUsers.FirstOrDefault(u => u.UserID == id);
 
             if (user == null) return false;
 

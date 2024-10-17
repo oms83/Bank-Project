@@ -19,7 +19,7 @@ namespace Bank_Project
             Console.WriteLine(new string('-', 60));
 
             int Choice;
-            Choice = clsValidation.GetEnterBetweenNM(1, 5);
+            Choice = clsValidation.GetEnterBetweenNM(1, 6);
 
             switch (Choice)
             {
@@ -55,7 +55,7 @@ namespace Bank_Project
             Console.WriteLine("\t[6] Main Menu: ");
             Console.WriteLine(new string('-', 60));
 
-            int choice = clsValidation.GetEnterBetweenNM(1, 5);
+            int choice = clsValidation.GetEnterBetweenNM(1, 6);
 
             switch (choice)
             {
@@ -91,7 +91,7 @@ namespace Bank_Project
             Console.WriteLine("\t[6] Main Menu: ");
             Console.WriteLine(new string('-', 60));
 
-            int choice = clsValidation.GetEnterBetweenNM(1, 5);
+            int choice = clsValidation.GetEnterBetweenNM(1, 6);
 
             switch (choice)
             {
@@ -127,7 +127,7 @@ namespace Bank_Project
             Console.WriteLine("\t[6] Main Menu: ");
             Console.WriteLine(new string('-', 60));
 
-            int choice = clsValidation.GetEnterBetweenNM(1, 5);
+            int choice = clsValidation.GetEnterBetweenNM(1, 6);
 
             switch (choice)
             {
