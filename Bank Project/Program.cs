@@ -1,5 +1,7 @@
 ﻿using Bank_Project.Person;
 using Bank_Project.Repository;
+using Bank_Project.User;
+using Bank_Project.Validation;
 
 namespace Bank_Project
 {
@@ -210,12 +212,6 @@ namespace Bank_Project
                     break;
             }
         }
-
-        public static void LoginScreen()
-        {
-
-        }
-
         public static void MainScreen()
         {
             Screen.Draw("Main Menu");
@@ -260,11 +256,35 @@ namespace Bank_Project
                         Console.Clear();
                         Console.WriteLine("Exiting...");
                         Thread.Sleep(1000);
+                        Console.Clear();
+                        clsCurrentUser.CurrentUser = null;
                         LoginScreen();
+
                         break;
                 }
 
             } while (Choice != 0);
+        }
+
+        public static void LoginScreen()
+        {
+            Screen.Draw("Login Screen");
+            string UserName = default;
+            do
+            {
+                UserName = clsValidation.GetString("Enter your username: ");
+            
+            } while((clsCurrentUser.CurrentUser = clsUser.GetUserByUserName(UserName)) is null);
+
+            string Password;
+            do
+            {
+                Password = clsValidation.GetString("Enter your password: ");
+
+            } while (clsCurrentUser.CurrentUser.Password != Password);
+
+            Console.Clear();
+            MainScreen();
         }
         public static void Main(string[] args)
         {
@@ -273,7 +293,7 @@ namespace Bank_Project
             clsRepository.ClientClusteredID = clsRepository.lstClients.Count;
             clsRepository.CountryClusteredID = clsRepository.lstCountries.Count;
 
-            MainScreen();
+            LoginScreen();
 
 
         }

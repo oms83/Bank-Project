@@ -1,6 +1,7 @@
 ﻿using Bank_Project.Repository;
 using Bank_Project.User;
 using Bank_Project;
+using Bank_Project.Validation;
 
 public class clsUserView : IScreen
 {

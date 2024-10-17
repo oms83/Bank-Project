@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Channels;
 using System.Threading.Tasks;
 
-namespace Bank_Project
+namespace Bank_Project.Validation
 {
     public class clsValidation
     {
@@ -47,7 +47,7 @@ namespace Bank_Project
             string input = Console.ReadLine();
             //Please enter your date of birth(yyyy-mm - dd): 
             DateTime dt = DateTime.Now;
-            
+
             while (!DateTime.TryParse(input, out DateTime dateOfBirth))
             {
                 Console.Write(message);
@@ -63,7 +63,7 @@ namespace Bank_Project
             do
             {
                 Number = GetPositiveNumber($"Enter Number Between {min} and {max}: ");
-            
+
             } while (Number < min || Number > max);
 
             return Number;

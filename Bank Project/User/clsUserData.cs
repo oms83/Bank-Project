@@ -37,7 +37,10 @@ namespace Bank_Project.User
         {
             return clsRepository.lstUsers.FirstOrDefault(user => user.UserID == id);
         }
-
+        public static UserDTO? GetUserByUserNameData(string username)
+        {
+            return clsRepository.lstUsers.FirstOrDefault(user => user.UserName == username);
+        }
         public static int AddNewUserData(UserDTO user)
         {
             user.UserID = clsRepository.lstUsers.Count == 0 ? 1 : (clsRepository.UserClusteredID += 1);

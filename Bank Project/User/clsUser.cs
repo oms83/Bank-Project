@@ -45,7 +45,19 @@ namespace Bank_Project.User
         }
         public static clsUser? GetUserByID(int id)
         {
-            UserDTO dto = clsUserData.GetUserByIDData(id);
+            UserDTO? dto = clsUserData.GetUserByIDData(id);
+            if (dto is not null)
+            {
+                return new clsUser(dto, enMode.Update);
+            }
+            else
+            {
+                return null;
+            }
+        }
+        public static clsUser? GetUserByUserName(string username)
+        {
+            UserDTO? dto = clsUserData.GetUserByUserNameData(username);
             if (dto is not null)
             {
                 return new clsUser(dto, enMode.Update);

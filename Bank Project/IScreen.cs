@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Bank_Project.User;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -27,11 +28,18 @@ namespace Bank_Project
         {
             Console.WriteLine($"\t   {DateTime.Now}");
         }
+
+        public static void CurrentUserInfo()
+        {
+            Console.WriteLine($"\t   Username: {clsCurrentUser.CurrentUser?.UserName ?? "N/A"}");
+        }
         public static void Draw(string message)
         {
             Console.Clear();
             Console.WriteLine(new string('-', 60));
             Clock();
+            Console.WriteLine(new string('-', 60));
+            CurrentUserInfo();
             Console.WriteLine(new string('-', 60));
             Console.WriteLine($"\t\t{message}");
             Console.WriteLine(new string('-', 60));
