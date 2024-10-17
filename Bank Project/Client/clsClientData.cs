@@ -47,7 +47,7 @@ namespace Bank_Project.Client
 
         public static bool UpdateClientData(int id, ClientDTO updatedClient)
         {
-            ClientDTO? client = GetClientByIDData(id);
+            ClientDTO? client = clsRepository.lstClients.FirstOrDefault(c => c.ClientID == id);
 
             if (client == null) return false;
 

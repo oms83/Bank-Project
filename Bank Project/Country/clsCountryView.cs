@@ -1,13 +1,14 @@
 ﻿using Bank_Project.Country;
 using Bank_Project.Repository;
 using Bank_Project;
+using System.Collections.Specialized;
 
 public class clsCountryView : IScreen
 {
     public static void DeleteScreen()
     {
         Screen.Draw("Delete Country By ID");
-        CountryDTO country = _GetCountryByID();
+        clsCountry country = _GetCountryByID();
         clsCountry.DeleteCountryByID(country.CountryID);
     }
 
@@ -24,7 +25,7 @@ public class clsCountryView : IScreen
         }
     }
 
-    private static CountryDTO _GetCountryByID()
+    private static clsCountry _GetCountryByID()
     {
         int countryID = default;
 
@@ -37,18 +38,18 @@ public class clsCountryView : IScreen
             countryID = clsValidation.GetPositiveNumber("Enter country id: ");
         }
 
-        return country;
+        return new clsCountry(country, clsCountry.enMode.Update);
     }
 
     public static void GetByIDScreen()
     {
         Screen.Draw("Get Country By ID");
 
-        CountryDTO country = _GetCountryByID();
+        clsCountry country = _GetCountryByID();
 
         Console.WriteLine(new string('-', 40));
         Console.WriteLine($"{"Country ID".PadRight(10)} {"Country Name".PadRight(30)}");
-        Console.WriteLine(country.ToString());
+        Console.WriteLine(country.CountryDTO.ToString());
         Console.WriteLine(new string('-', 40));
     }
 
@@ -64,15 +65,16 @@ public class clsCountryView : IScreen
     {
         Screen.Draw("Update Country Info");
 
-        CountryDTO country = _GetCountryByID();
+        clsCountry country = _GetCountryByID();
 
         Console.WriteLine(new string('-', 40));
 
-        CountryDTO countryNewInfo = _GetCountryInfo();
+        CountryDTO updatedCountry = _GetCountryInfo();
 
-        clsCountry updatedCountry = new clsCountry(countryNewInfo, clsCountry.enMode.Update);
+        country.CountryName = updatedCountry.CountryName;
 
-        updatedCountry.Save();
+
+        country.Save();
     }
 
     public static void AddNewScreen()

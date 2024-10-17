@@ -7,7 +7,7 @@ public class clsClientView : IScreen
     public static void DeleteScreen()
     {
         Screen.Draw("Delete Client By ID");
-        ClientDTO client = _GetClientByID();
+        clsClient client = _GetClientByID();
         clsClient.DeleteClientByID(client.ClientID);
     }
 
@@ -24,7 +24,7 @@ public class clsClientView : IScreen
         }
     }
 
-    private static ClientDTO _GetClientByID()
+    private static clsClient _GetClientByID()
     {
         int clientID = default;
 
@@ -37,18 +37,18 @@ public class clsClientView : IScreen
             clientID = clsValidation.GetPositiveNumber("Enter client id: ");
         }
 
-        return client;
+        return new clsClient(client, clsClient.enMode.Update);
     }
 
     public static void GetByIDScreen()
     {
         Screen.Draw("Get Client By ID");
 
-        ClientDTO client = _GetClientByID();
+        clsClient client = _GetClientByID();
 
         Console.WriteLine(new string('-', 50));
         Console.WriteLine($"{"Client ID".PadRight(10)} {"Account Number".PadRight(20)} {"Balance".PadRight(15)}");
-        Console.WriteLine(client.ToString());
+        Console.WriteLine(client.ClientDTO.ToString());
         Console.WriteLine(new string('-', 50));
     }
 
@@ -66,15 +66,16 @@ public class clsClientView : IScreen
     {
         Screen.Draw("Update Client Info");
 
-        ClientDTO client = _GetClientByID();
+        clsClient client = _GetClientByID();
 
         Console.WriteLine(new string('-', 50));
 
-        ClientDTO clientNewInfo = _GetClientInfo();
+        ClientDTO updatedClient = _GetClientInfo();
 
-        clsClient updatedClient = new clsClient(clientNewInfo, clsClient.enMode.Update);
+        client.AccountNumber = updatedClient.AccountNumber;
+        client.Balance = updatedClient.Balance;
 
-        updatedClient.Save();
+        client.Save();
     }
 
     public static void AddNewScreen()

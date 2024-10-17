@@ -108,7 +108,7 @@ namespace Bank_Project
                     clsClientView.GetAllScreen();
                     break;
                 case (int)enChoices.Find:
-                    clsClientView.GetAllScreen();
+                    clsClientView.GetByIDScreen();
                     break;
                 case (int)enChoices.MainMenu:
                     MainScreen();
@@ -144,7 +144,7 @@ namespace Bank_Project
                     clsCountryView.GetAllScreen();
                     break;
                 case (int)enChoices.Find:
-                    clsCountryView.GetAllScreen();
+                    clsCountryView.GetByIDScreen();
                     break;
                 case (int)enChoices.MainMenu:
                     MainScreen();
