@@ -272,14 +272,14 @@ namespace Bank_Project
             string UserName = default;
             do
             {
-                UserName = clsValidation.GetString("Enter your username: ");
+                UserName = clsValidation.GetString("Enter your username (enter [oms83]): ");
             
             } while((clsCurrentUser.CurrentUser = clsUser.GetUserByUserName(UserName)) is null);
 
             string Password;
             do
             {
-                Password = clsValidation.GetString("Enter your password: ");
+                Password = clsValidation.GetString("Enter your password (enter [0000]): ");
 
             } while (clsCurrentUser.CurrentUser.Password != Password);
 
