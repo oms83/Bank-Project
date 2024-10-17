@@ -20,7 +20,7 @@ namespace Bank_Project.Repository
 
         public static int CountryClusteredID;
 
-        public static List<PersonDTO> lstPeople => new List<PersonDTO>()
+        public static List<PersonDTO> lstPeople = new List<PersonDTO>()
             {
                 new PersonDTO { PersonID = 1, FirstName = "Ömer",   LastName = "MEMES",  DateOfBirth = new DateTime(2000, 3, 8),   CountryID = 1 },
                 new PersonDTO { PersonID = 2, FirstName = "Ahmet",  LastName = "YILMAZ", DateOfBirth = new DateTime(1995, 5, 20),  CountryID = 1 },
@@ -34,13 +34,13 @@ namespace Bank_Project.Repository
                 new PersonDTO { PersonID = 10, FirstName = "Hasan", LastName = "SAHIN",  DateOfBirth = new DateTime(1985, 2, 14),  CountryID = 4 }
             };
 
-        public static List<UserDTO> lstUsers => new List<UserDTO>()
+        public static List<UserDTO> lstUsers = new List<UserDTO>()
         {
             new UserDTO { UserID = 1, UserName = "oms83", Password = "0000", PersonID = 1 },
             new UserDTO { UserID = 2, UserName = "ali20", Password = "0000", PersonID = 2 },
         };
 
-        public static List<CountryDTO> lstCountries => new List<CountryDTO>()
+        public static List<CountryDTO> lstCountries = new List<CountryDTO>()
         {
             new CountryDTO { CountryID = 1, CountryName = "Turkey" },
             new CountryDTO { CountryID = 2, CountryName = "Syria" },
@@ -54,7 +54,7 @@ namespace Bank_Project.Repository
             new CountryDTO { CountryID = 10, CountryName = "Morocco" }
         };
 
-        public static List<ClientDTO> lstClients => new List<ClientDTO>()
+        public static List<ClientDTO> lstClients = new List<ClientDTO>()
         {
             new ClientDTO { ClientID = 1, AccountNumber = "ACC10001", Balance = 1500m, PersonID = 1 },
             new ClientDTO { ClientID = 2, AccountNumber = "ACC10002", Balance = 2500m, PersonID = 2 },

@@ -56,17 +56,17 @@ namespace Bank_Project.Person
 
         public static bool UpdatePersonData(int id, PersonDTO dto)
         {
-            PersonDTO ? person = GetPersonByIDData(id);
+            PersonDTO? person = clsRepository.lstPeople.FirstOrDefault(p => p.PersonID == id);
             
             if (person is null)
             {
                 return false;
             }
 
-            dto.FirstName = person.FirstName;
-            dto.LastName = person.LastName;
-            dto.DateOfBirth = person.DateOfBirth;
-            dto.CountryID = person.CountryID;
+            person.FirstName = dto.FirstName;
+            person.LastName = dto.LastName;
+            person.DateOfBirth = dto.DateOfBirth;
+            person.CountryID = dto.CountryID;
             
             return true;
         }

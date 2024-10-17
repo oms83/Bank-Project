@@ -17,7 +17,7 @@ namespace Bank_Project.Person
         public static void DeleteScreen()
         {
             Screen.Draw("Delete Person By ID");
-            PersonDTO person = _GetPersonByID();
+            clsPerson person = _GetPersonByID();
             clsPerson.DeletePersonByID(person.PersonID);
         }
         public static void GetAllScreen()
@@ -33,7 +33,7 @@ namespace Bank_Project.Person
             }
         }
 
-        private static PersonDTO _GetPersonByID()
+        private static clsPerson _GetPersonByID()
         {
             int personID = default;
 
@@ -46,17 +46,17 @@ namespace Bank_Project.Person
                 personID = clsValidation.GetPositiveNumber("Enter person id: ");
             }
 
-            return person;
+            return new clsPerson(person, clsPerson.enMode.Update);
         }
         public static void GetByIDScreen()
         {
             Screen.Draw("Get Person By ID");
 
-            PersonDTO person = _GetPersonByID();
+            clsPerson person = _GetPersonByID();
 
             Console.WriteLine(new string('-', 60));
             Console.WriteLine($"{"ID".PadRight(8)} {"First Name".PadRight(15)} {"Last Name".PadRight(20)} {"Date of Birth".PadRight(15)}");
-            Console.WriteLine(person.ToString());
+            Console.WriteLine(person.personDTO.ToString());
             Console.WriteLine(new string('-', 60));
 
         }
@@ -82,15 +82,18 @@ namespace Bank_Project.Person
         {
             Screen.Draw("Update Person Info");
 
-            PersonDTO person = _GetPersonByID();
+            clsPerson person = _GetPersonByID();
             
             Console.WriteLine(new string('-', 60));
 
-            PersonDTO PersonNewInfo = _GetPersonInfo();
+            PersonDTO updatedPerson = _GetPersonInfo();
 
-            clsPerson updatedPerson = new clsPerson(PersonNewInfo, clsPerson.enMode.Update);
+            person.FirstName = updatedPerson.FirstName;
+            person.LastName = updatedPerson.LastName;
+            person.DateOfBirth = updatedPerson.DateOfBirth;
+            person.CountryID = updatedPerson.CountryID;
 
-            updatedPerson.Save();
+            person.Save();
 
         }
 
